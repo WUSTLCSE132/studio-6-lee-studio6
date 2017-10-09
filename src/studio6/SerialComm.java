@@ -27,10 +27,33 @@ public class SerialComm {
 	}
 		
 	// TODO: Add writeByte() method from Studio 5
+	public boolean writeByte(byte singleByte) throws SerialPortException{
+		port.writeByte(singleByte);
+		String str = Integer.toHexString(singleByte);
+		System.out.print(str);
+		return debug;
+	}
 	
 	// TODO: Add available() method
+	public boolean available(byte singleByte) throws SerialPortException{
+		int count = port.getInputBufferBytesCount();
+		if (count > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	// TODO: Add readByte() method	
+	public byte readByte(int singleByte) throws SerialPortException {
 	
+	}
 	// TODO: Add a main() method
+	public static void main() {
+
+		while(available()){
+			writeByte();
+		}
+	};
 }
